@@ -2,6 +2,16 @@
   text-align: center;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(45deg, #e3f2fd, #dbe9f5); /* Soft blue gradient */
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

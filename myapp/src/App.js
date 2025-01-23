@@ -1,11 +1,12 @@
 import React from 'react'
-import './App.css';
+import Weather from './components/Weather'
+import './App.css'
 
 
 function App() {
   return (
-    <div>
-      <h1>Hello world</h1>
+    <div className='container-fluid d-flex align-items-center justify-content-center'>
+      <Weather/>
     </div>
   )
 }

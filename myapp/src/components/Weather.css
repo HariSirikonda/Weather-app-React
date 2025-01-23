@@ -1,0 +1,20 @@
+.weather-container {
+    margin: auto; /* Center inside the parent */
+    width: 600px;
+    height: auto;
+    padding: 20px;
+    background-image: linear-gradient(45deg, #2f4680, #5373c1); /* Gradient with two colors */
+    color: white;
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for better visibility */
+}
+
+.search-button {
+    width: 100px;
+    height: 60px;
+}
+
+.search-input {
+    width: 500px;
+    height: 60px;
+}
