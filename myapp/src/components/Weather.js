@@ -1,17 +1,27 @@
-import React, { useEffect } from 'react'
-import Clear from '../assets/clear.png';
-import Humidity from '../assets/humidity.png';
-import Wind from '../assets/wind.png';
+import React, { useEffect, useState } from 'react'
+import Clear_icon from '../assets/clear.png';
+import Humidity_icon from '../assets/humidity.png';
+import Wind_icon from '../assets/wind.png';
 import './Weather.css';
 
 function Weather() {
+    
+    const [weatherData, setWeatherData] = useState(false);
+
+
 
     const search = async (city) => {
         try {
-            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}`;
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_API_KEY}`;
             const responce = await fetch(url);
             const data = await responce.json();
             console.log(data);
+            setWeatherData({
+                humidity : data.main.humidity,
+                temperature : Math.floor(data.main.temp),
+                location : data.name,
+                wind : data.wind.speed
+            })
         } catch (error) {
             console.error("Error fetching weather data:", error);
         }
@@ -30,7 +40,7 @@ function Weather() {
             </div>
             {/* Temperature area */}
             <div className='container text-center'>
-                <img src={Clear} alt='show me'/>
+                <img src={Clear_icon} alt='show me'/>
                 <h3>16&deg; Celsius</h3>
                 <h1 className='text-light'>New Delhi</h1>
             </div>
@@ -39,7 +49,7 @@ function Weather() {
                 <div className='container mt-3 text-center'>
                     <div className='containerfluid d-flex align-items-center justify-content-center'>
                         <div>
-                            <img src={Humidity} alt='show me'/>
+                            <img src={Humidity_icon} alt='show me'/>
                         </div>
                         <div className='mx-2'>
                             <h1>67%</h1>
@@ -53,7 +63,7 @@ function Weather() {
                 <div className='container mt-3 text-center'>
                     <div className='containerfluid d-flex align-items-center justify-content-center'>
                         <div>
-                            <img src={Wind} alt='show me'/>
+                            <img src={Wind_icon} alt='show me'/>
                         </div>
                         <div className='mx-2'>
                             <h1>15 km/h</h1>
