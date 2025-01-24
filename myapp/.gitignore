@@ -11,6 +11,15 @@
 # production
 /build
 
+# Ignore node_modules directory
+node_modules/
+
+# Ignore all log files
+*.log
+
+# Ignore environment variable files
+.env
+
 # misc
 .DS_Store
 .env.local
