@@ -1,10 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Clear from '../assets/clear.png';
 import Humidity from '../assets/humidity.png';
 import Wind from '../assets/wind.png';
 import './Weather.css';
 
 function Weather() {
+
+    const search = async (city) => {
+        try {
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}`;
+            const responce = await fetch(url);
+            const data = await responce.json();
+            console.log(data);
+        } catch (error) {
+            console.error("Error fetching weather data:", error);
+        }
+    }
+
+    useEffect(()=>{
+        search("London");
+    },[])
+
     return (
         <div className='weather-container shadow m-3 p-3 rounded'>
             {/* Search input area */}
