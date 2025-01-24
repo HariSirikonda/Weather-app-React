@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Clear_icon from '../assets/clear.png';
+import Cloud_icon from '../assets/cloud.png';
+import Drizzle_icon from '../assets/drizzle.png';
 import Humidity_icon from '../assets/humidity.png';
+import Rain_icon from '../assets/rain.png';
+import Search_icon from '../assets/search.png';
+import Snow_icon from '../assets/snow.png';
 import Wind_icon from '../assets/wind.png';
 import './Weather.css';
 
