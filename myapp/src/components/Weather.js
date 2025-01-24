@@ -44,13 +44,14 @@ function Weather() {
         }
         try {
             const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_API_KEY}`;
-            const response = await fetch(url);
-            const data = await response.json();
-            if (!response.ok) {
+            const responce = await fetch(url);
+            const data = await responce.json();
+            console.log(data);
+            if (!responce.ok) {
                 alert(data.message);
                 return;
             }
-            const icon = data.weather && data.weather[0] ? allIcons[data.weather[0].icon] : Clear_icon;
+            const icon = allIcons[data.weather[0].icon] || Clear_icon;
             setWeatherData({
                 humidity: data.main.humidity,
                 temperature: Math.floor(data.main.temp),
@@ -70,17 +71,20 @@ function Weather() {
 
     return (
         <div className='weather-container shadow m-3 p-3 rounded'>
+            {/* Search input area */}
             <div className='d-flex justify-content-center align-items-center'>
                 <input className='search-input form-control m-2 rounded-pill shadow-none' ref={inputRef} placeholder='Enter city name' type='text'></input>
                 <button className='search-button btn btn-light m-2 rounded-pill shadow-none' onClick={() => search(inputRef.current.value)}><b>Search</b></button>
             </div>
             {weatherData ? <>
 
+                {/* Temperature area */}
                 <div className='container text-center'>
                     <img src={weatherData.icon} alt='show me' />
                     <h3>{weatherData.temperature}&deg; Celsius</h3>
                     <h1 className='text-light'>{weatherData.location}</h1>
                 </div>
+                {/* Humidity and Wind speed area */}
                 <div className='container-fluid d-flex align-items-center justify-content-center m-2 p-2'>
                     <div className='container mt-3 text-center'>
                         <div className='containerfluid d-flex align-items-center justify-content-center'>
@@ -95,6 +99,7 @@ function Weather() {
                             <h4>Humidity</h4>
                         </div>
                     </div>
+                    {/* Wind speed area */}
                     <div className='container mt-3 text-center'>
                         <div className='containerfluid d-flex align-items-center justify-content-center'>
                             <div>
