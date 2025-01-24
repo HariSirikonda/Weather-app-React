@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Clear_icon from '../assets/clear.png';
 import Cloud_icon from '../assets/cloud.png';
 import Drizzle_icon from '../assets/drizzle.png';
@@ -19,6 +19,7 @@ function Weather() {
         icon: Clear_icon
     });
 
+    const inputRef = useRef();
     const allIcons = {
         "01d" : Clear_icon,
         "01n" : Clear_icon,
@@ -63,8 +64,8 @@ function Weather() {
         <div className='weather-container shadow m-3 p-3 rounded'>
             {/* Search input area */}
             <div className='d-flex justify-content-center align-items-center'>
-                <input className='search-input form-control m-2 rounded-pill shadow-none' placeholder='Enter city name' type='text'></input>
-                <button className='search-button btn btn-light m-2 rounded-pill shadow-none'><b>Search</b></button>
+                <input className='search-input form-control m-2 rounded-pill shadow-none' ref={inputRef} placeholder='Enter city name' type='text'></input>
+                <button className='search-button btn btn-light m-2 rounded-pill shadow-none' onClick={() => search(inputRef.current.value)}><b>Search</b></button>
             </div>
             {/* Temperature area */}
             <div className='container text-center'>
